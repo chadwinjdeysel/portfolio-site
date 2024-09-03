@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogItem from "../../components/BlogItem.astro";
+const allPosts = await Astro.glob("./*.md");
+---
+
+<Layout title="Blog">
+  <h1>Blog Archive</h1>
+
+  <aside>
+    <nav>
+      <ul>
+        {
+          allPosts.map((post) => (
+            <BlogItem
+              title={post.frontmatter.description}
+              description={post.frontmatter.description}
+              url={post.url}
+              published={post.frontmatter.published}
+            />
+          ))
+        }
+      </ul>
+    </nav>
+  </aside>
+</Layout>
+
+<style>
+  h3 {
+    text-decoration: underline;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+</style>
