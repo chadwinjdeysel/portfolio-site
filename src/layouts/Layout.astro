@@ -1,4 +1,8 @@
 ---
+import { Image } from "astro:assets";
+import logoLight from "../assets/Light.svg";
+import logoDark from "../assets/Dark.svg";
+
 interface Props {
   title: string;
 }
@@ -45,9 +49,16 @@ const { title } = Astro.props;
         <ul>
           <li>
             <a href="/">
-              <img
-                :src="theme === 'light' ? '../assets/Light.svg' : '../src/assets/Dark.svg'"
-                alt="Chadwin Deysel Logo"
+              <Image
+                x-show="theme === 'light'"
+                src={logoLight}
+                alt="Chadwin Deysel Logo Dark"
+              />
+
+              <Image
+                x-show="theme === 'dark'"
+                src={logoDark}
+                alt="Chadwin Deysel Logo Dark"
               />
             </a>
           </li>
